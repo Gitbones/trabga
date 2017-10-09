@@ -239,25 +239,24 @@ int main() {
 	glUseProgram( shader_programme );
 	glUniformMatrix4fv( matrix_location, 1, GL_FALSE, matrix );
 
-	// -------------------------------------------------------
+		// -------------------------------------------------------
 	// 1.b
 
-	//GLfloat matrix1 = {
+	//GLfloat matrix1[] = {
 	//	1.0f, 0.0f, 0.0f, 0.0f, // first column
 	//	0.0f, 1.0f, 0.0f, 0.0f, // second column
 	//	0.0f, 0.0f, 1.0f, 0.0f, // third column
 	//	-0.5f, -0.5f, 0.0f, 1.0f	// fourth column
 	//};
 
-
-	//GLfloat matrix2 = {
+	//GLfloat matrix2[] = {
 	//	cos(ang), -sin(ang), 0.0f, 0.0f, // first column
 	//	sin(ang), cos(ang), 0.0f, 0.0f, // second column
 	//	0.0f, 0.0f, 1.0f, 0.0f, // third column
 	//	0.0f, 0.0f, 0.0f, 1.0f	// fourth column
 	//};
 
-	//GLfloat matrix3 = {
+	//GLfloat matrix3[] = {
 	//	1.0f, 0.0f, 0.0f, 0.0f, // first column
 	//	0.0f, 1.0f, 0.0f, 0.0f, // second column
 	//	0.0f, 0.0f, 1.0f, 0.0f, // third column
@@ -277,14 +276,15 @@ int main() {
 	//glUniformMatrix4fv(matrix_location3, 1, GL_FALSE, matrix3);
 
 	// -----------------------------------------------
-	//	1.a
 
-	//mat4 matrix1{
+	//1.a
+
+	//mat4 matrix1(
 	//	1.0f, 0.0f, 0.0f, 0.0f, // first column
 	//	0.0f, 1.0f, 0.0f, 0.0f, // second column
 	//	0.0f, 0.0f, 1.0f, 0.0f, // third column
 	//	-0.5f, -0.5f, 0.0f, 1.0f	// fourth column
-	//};
+	//);
 
 
 	//mat4 matrix2(
@@ -334,6 +334,23 @@ int main() {
 		// time that I call glDrawArrays() so I never use the wrong shader programme
 		glUseProgram( shader_programme );
 
+		//------------------------------------------------------------------------
+		//1.c
+
+		//glm::mat4 transMatrix, rotMatrix, trans2Matrix, fullmatrix;
+
+		//transMatrix = glm::translate(transMatrix, glm::vec3(-0.5f, -0.5f, 0.0f));
+		//rotMatrix = glm::rotate(rotMatrix, glm::radians(30.0f), glm::vec3(0.0f, 0.0f, 1.0f));
+		//trans2Matrix = glm::translate(trans2Matrix, glm::vec3(0.5f, 0.5f, 0.0f));
+		//fullmatrix = trans2Matrix * rotMatrix * transMatrix;
+
+		//GLint fullTransMatrix = glGetUniformLocation(shader_programme, "fullmatrix");
+		//glUniformMatrix4fv(fullTransMatrix, 1, GL_FALSE, glm::value_ptr(fullmatrix));
+
+		//------------------------------------------------------------------------------
+
+	
+		
 		// update the matrix
 		// - you could simplify this by just using sin(current_seconds)
 	/*	matrix[12] = elapsed_seconds * speed + last_position;
@@ -344,9 +361,14 @@ int main() {
 		//
 		// Note: this call is related to the most recently 'used' shader programme
 
-		// 
-		// 1a
-		//glUniformMatrix4fv( matrix_location, 1, GL_FALSE, matrix4.m );
+		// -------------------------------------------------------------
+		//1.a
+		//glUniformMatrix4fv(matrix_location, 1, GL_FALSE, matrix4.m);
+
+		//1.b
+		/*glUniformMatrix4fv(matrix_location1, 1, GL_FALSE, matrix1);*/
+
+		//-------------------------------------------------------------------------------------
 
 
 		glUniformMatrix4fv( matrix_location, 1, GL_FALSE, matrix );
